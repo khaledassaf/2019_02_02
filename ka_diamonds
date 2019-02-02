@@ -1,0 +1,94 @@
+// Write a function that generates text diamonds of any size, like the ones
+// below, where n is the number of steps from the center to each corner.
+
+newline := '
+';
+
+func Diamond(n) {
+
+  line := newline;
+
+  for(i := 0; i < (2*n)/2+1; i++){
+    for(k := n-i; k > 0; k--){
+        line = line ++ ' ';
+    }
+    for(j := 0; j < 2*i+1; j++){
+      line = line ++ '*';
+    }
+
+    line = line ++ newline;
+  }
+
+    for(i := (2*n)/2 -1; i >= 0 ; i--){
+      for(k := n-i; k > 0; k--){
+          line = line ++ ' ';
+      }
+      for(j := 0; j < 2*i+1; j++){
+        line = line ++ '*';
+      }
+
+      line = line ++ newline;
+  }
+
+  return line;
+};
+
+log.info Diamond(0);
+log.info Diamond(1);
+log.info Diamond(2);
+log.info Diamond(3);
+log.info Diamond(10);
+
+assert Diamond(0) == '
+*
+';
+
+assert Diamond(1) == '
+ *
+***
+ *
+';
+
+assert Diamond(2) == '
+  *
+ ***
+*****
+ ***
+  *
+';
+
+assert Diamond(3) == '
+   *
+  ***
+ *****
+*******
+ *****
+  ***
+   *
+';
+
+assert Diamond(10) == '
+          *
+         ***
+        *****
+       *******
+      *********
+     ***********
+    *************
+   ***************
+  *****************
+ *******************
+*********************
+ *******************
+  *****************
+   ***************
+    *************
+     ***********
+      *********
+       *******
+        *****
+         ***
+          *
+';
+
+return Diamond;
